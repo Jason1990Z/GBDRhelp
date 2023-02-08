@@ -1,1 +1,2 @@
 # install
+install_easyGBDR()

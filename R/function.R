@@ -35,6 +35,20 @@ install_easyGBDR <- function(){
 #' @examples
 install_INLA <- function(dir){
   library(dplyr)
+  packages <- c("graph", "Rgraphviz")
+  for (i in 1:length(packages)) {
+    if (!packages[i] %in% installed.packages()[, "Package"]) {
+      BiocManager::install(packages[i], dep=TRUE)}}
+
+  packages <- c('Deriv', 'Ecdat', 'HKprocess','evd',
+                'fields', 'gsl', 'graph', 'markdown', 'matrixStats', 'mlogit',
+                'mvtnorm', 'pixmap', 'rgl', 'sn', 'spdep', 'splancs', 'terra',
+                'tidyterra')
+  for (i in 1:length(packages)) {
+    if (!packages[i] %in% installed.packages()[, "Package"]) {
+      install.packages(packages[i], dependencies = TRUE,
+                       quiet = TRUE, keep_outputs = TRUE)}}
+
   packages <- c("Matrix","foreach","parallel",'sp')
   for (i in 1:length(packages)) {
     if (!packages[i] %in% installed.packages()[,"Package"]) {
@@ -42,17 +56,17 @@ install_INLA <- function(dir){
     }
   }
 
+
   R_version <- floor(as.numeric(R.Version()$minor))*0.1+as.numeric(R.Version()$major)
   if (do::is.windows()){
     desc <- paste(dir,'windows',sep='/') %>% paste(R_version,sep='/')
     INLA <- list.files(desc, "INLA", full.names = TRUE)
   }else {
-    desc <- paste(dir,'mac',sep='/') %>% paste(R_version,sep='/')
-    INLA <- list.files(desc, "INLA", full.names = TRUE)
+    desc <- paste(dir,'mac',sep='/') %>% paste(R_version,sep='/') %>% paste0('/')
+    INLA <- list.files(path=desc, full.names = TRUE)
   }
   install.packages(pkgs = INLA, repos = NULL, quiet = FALSE)
 }
-
 
 .paste_GBDR <- function(GBDR="easyGBDR"){
   .a1 <- paste0(.a,.b)
@@ -72,6 +86,8 @@ install_INLA <- function(dir){
 .G <- 'AA0'
 .i <- 'B'
 .H <- 'MCGnt'
+.h <- 'mcgnt'
+.J <- 'uya'
 .j <- 'UYa'
 .k <- 'MYr_'
 .l <- '6jV'

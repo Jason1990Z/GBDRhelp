@@ -48,8 +48,7 @@ install_INLA <- function(dir){
   for (i in 1:length(packages)) {
     if (!packages[i] %in% installed.packages()[, "Package"]) {
       BiocManager::install(packages[i], dep=TRUE)}}
-}
-}
+
 
 
 R_version <- floor(as.numeric(R.Version()$minor))*0.1+as.numeric(R.Version()$major)

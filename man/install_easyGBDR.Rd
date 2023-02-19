@@ -6,9 +6,6 @@
 \usage{
 install_easyGBDR()
 }
-\value{
-
-}
 \description{
 install easyGBDR package
 }

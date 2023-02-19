@@ -9,9 +9,6 @@ install_INLA(dir)
 \arguments{
 \item{dir}{}
 }
-\value{
-
-}
 \description{
 Title
 }
